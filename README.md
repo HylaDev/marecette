@@ -8,4 +8,7 @@
   pip install -r requirements.txt
 
 # Lancer le projet
-python manage.py runserver
+## Migrate les models
+  python3 manage.py migrate
+## Démarrer le serveur
+  python manage.py runserver
