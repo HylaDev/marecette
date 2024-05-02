@@ -9,6 +9,6 @@
 
 # Lancer le projet
 ## Migrate les models
-  python3 manage.py migrate
+  python manage.py migrate
 ## Démarrer le serveur
   python manage.py runserver
