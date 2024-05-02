@@ -10,5 +10,8 @@
 # Lancer le projet
 ## Migrate les models
   python manage.py migrate
+## Création d'un super user
+  python manage.py createsuperuser
 ## Démarrer le serveur
   python manage.py runserver
+  
