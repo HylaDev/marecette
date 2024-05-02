@@ -1,0 +1,190 @@
+/*  style general */
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+    --primary-color:#efac1a;
+    --secondary-color:#808080;
+    --white-color:#ffffff;
+    --black-color:#000000;
+}
+
+body {
+    margin: 0;
+    font-family: "MuseoModerno", sans-serif;
+  }
+  a{
+    color: var(--secondary-color);
+  }
+  a:hover{
+    color: var(--primary-color);
+  }  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 240px;
+    background-color: var(--secondary-color);
+    position: fixed;
+    height: 100vh;
+    overflow: hidden !important;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: var(--white-color);
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+  
+  div.content {
+    margin-left: 250px;
+    padding: 1px 16px;
+    height: 1000px;
+  
+  }
+  .content .myd-flex{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  div .contacts{
+    background-color: var(--primary-color)!important;
+    color: var(--white-color);
+    width: 200px !important;
+    padding: 3%;
+  }
+  div a {
+    text-decoration: none;
+  }
+  div .contacts p{
+    font-size: 20px;
+  }
+  @media screen and (max-width: 600px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a span{
+      display: none;
+    }
+    .sidebar a {
+      float: left;
+    }
+    div.content {
+      margin-left: 0!important;
+    }
+  }
+  
+  @media screen and (max-width: 200px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+.btn-primary{
+    background-color: transparent;
+    border: var(--primary-color) 2px solid;
+    color: #000000;
+}
+.btn-primary:hover{
+    background-color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+}
+
+.btn-secondary{
+    background-color: transparent;
+    border: var(--secondary-color) 2px solid;
+    color: var(--white-color)
+}
+.btn-secondary:hover{
+    background-color: var(--secondary-color);
+    border: var(--secondary-color) 2px solid;
+}
+.text-justify{
+    text-align: justify !important;
+}
+.my-bg-primary{
+    background-color: var(--primary-color);
+}
+.bg-white{
+    background-color: var(--white-color);
+}
+.titre{
+    margin-bottom: 2px;
+    padding: 2%;
+    border-bottom: solid 1px var(--white-color);
+    width: 50px;
+}
+h1,h2{
+    color: var(--secondary-color);
+}
+
+.text-gray{
+    color: var(--secondary-color)!important;
+}
+
+
+/** contact **/
+.inscription{
+    margin-top: 5% !important;
+}
+
+input:focus, textarea:focus, .btn:focus{
+    border-color: var(--primary-color) !important;
+    background-color: var(--primary-color);
+}
+
+/** inscription **/
+.inscription .inscription-bg {
+    background-color: var(--white-color);
+    box-shadow: -4px 4px 6px -6px #eee,
+                -6px 4px 16px 6px #eee;
+}
+
+.inscription .inscription-text {
+    margin-top: 20vh !important;
+}
+@media screen and (max-width:1000px) {
+    .inscription .inscription-text {
+        margin-top: 0vh !important;
+        padding: 1%;
+    }
+}
+.inscription .inscription-text a{
+    text-decoration: underline;
+    color: var(--secondary-color) !important;
+}
+.inscription .formulaire span{
+    color: var(--primary-color) !important;
+}
+
+/*** footer ****/
+.footer{
+    background-color: var(--white-color);
+    padding: 1%;
+    color: var(--secondary-color);
+    text-align: center;
+}
+.footer .icon{
+    font-size: 40px;
+}
+.footer a{
+    color: var(--gray-color);
+}
+.footer a:hover{
+    color: var(--primary-color);   
+}
+
+.footer .heart{
+    font-size: 20px;
+    font-weight: 800;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Ajouter un ingrédient {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        
+        <div class="">
+            <h2>Ajouter un ingrédient</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% include 'messages.html' %} 
+                <form action="{% url 'ajout_ingredient'%}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user" value="{{user.id}}" class="form-control">
+                    <input type="text" name="name" placeholder="Nom de l'ingrédient" class="form-control">
+                    
+                    <textarea name="description" class="form-control my-3" placeholder="Décrivez l'ingrédient" id="" cols="30" rows="3"></textarea>
+
+                    <button type="submit" class="btn btn-primary w-100 my-3">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

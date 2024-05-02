@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Tableau de bord {% endblock%}
+
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="search">
+        <form action="{% url 'recherche' %}" method="GET" class="form-inline d-flex my-4">
+            {% csrf_token %}
+            <input class="form-control w-50 mx-3" name="query" value="{{ request.GET.query }}" type="search" placeholder="Rechercher un plat..." aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    {%include 'messages.html'%} 
+    <div class="container mt-5 myd-flex">
+        <a href="{% url 'plats' %}">
+            <div class='contacts mx-4 my-3'>
+                <h1><b><i class='fa fa-pizza-slice'></i> {{dishs}}</b></h1>
+                <p class='text-center'>Plat(s)</p>
+            </div>
+        </a>
+        <a href=''>
+            <div class='contacts mx-4 my-3'>
+                <h1><b><i class='fa fa-seedling'></i> {{ingredients}}</b></h1>
+                <p class='text-center'>Ingrédient(s)</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

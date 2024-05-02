@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Recommander un plat {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        
+        <div class="my-4">
+            <h2>Voici les plats à recommander pour la saison: {{season.name}}</h2>
+        </div>
+        <div class="row">
+            {% for dish in dishs%}       
+            <div class="col-md-4" style="width: 15rem;">
+                <div class="card bg-dark text-white text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">{{dish.name}}</h5>
+                    </div>
+                </div>
+            </div>
+            {%endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}

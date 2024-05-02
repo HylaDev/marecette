@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Liste de course {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        
+        <div class="my-4">
+            <h2>Voici une liste de course pour ce plat:</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            {% if not ingredient_list %}
+                <p>Il y a aucun ingrédient lié à ce plat</p>
+            {% else %}
+                {% for ingredient in ingredient_list%}
+                    <ul class="">
+                        <li class="">
+                            <b>{{ingredient.ingredient}} : {{ingredient.quantity}}</b>
+                        </li>
+                    </ul> 
+                {%endfor %}  
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

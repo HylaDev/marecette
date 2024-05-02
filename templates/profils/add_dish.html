@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Ajouter un plat {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        {%include 'messages.html'%}
+        <div class="">
+            <h2>Ajouter un plat</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="{% url 'ajout_plat'%}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user" value="{{user.id}}" class="form-control">
+                    <select name="season" class="form-control my-3" id="">
+                        <option value="">Sélectionner une saison</option>
+                        {%for season in seasons %}
+                            <option value="{{season.id}}">{{season.name}}</option>
+                        {%endfor %}
+                    </select>
+                    <input type="text" name="name" class="form-control" id="" placeholder="Nom du plat">
+
+                    <button type="submit" class="btn btn-primary w-100 my-3">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

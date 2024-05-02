@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+    {%block styles %}
+    <!--Bootstrap 5 link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Mes feuilles de style-->
+    <link rel="stylesheet" href="{% static 'styles/index.css'%}">
+    {%endblock%}
+    {%block extrastyles %}
+    {%endblock%}
+</head>
+<body>
+    <!-- mon sidebar  -->
+    <div class="sidebar">
+        <a href="{% url 'dashboard' %}" class="" title="dashboard"><i class="fa fa-dashboard"></i> <span>dashboard</span></a>
+        <a href="{% url 'ajout_plat' %}" title=""><i class="fa fa-pizza-slice"></i> <span>Ajouter un plat</span></a>
+        <a href="{% url 'ajout_ingredient' %}" title=""><i class="fa fa-seedling"></i> <span>Ajouter un ingrédient</span></a>
+        <a href="{% url 'ajout_ingredient_à_plat' %}" title=""><i class="fa fa-seedling"></i> <span>Ajouter un ingrédient à un plat</span></a>
+        <a href="{% url 'choix_saison' %}" title=""><i class="fa fa-pizza-slice"></i> <span>Recommander un plat</span></a>
+        <a href="{% url 'choix_plat' %}" title=""><i class="fa fa-cutlery"></i> <span>Liste de courses</span></a>
+        {% if user.is_authenticated %}
+        <a href="" title="Déconnexion"><i class="fa fa-user"></i> <span>{{user.username}}</span></a>
+        {% endif %}
+    </div>
+    {%block content%}
+    
+    {%endblock%}
+    <!-- Footer section-->
+    <section class="footer">
+        <div class="">
+            <div className="d-flex flex-row align-items-center justify-content-center">
+                <span className='icon'><a href='https://www.linkedin.com/in/y%C3%A9lian-ernest-dossa/' target='blank'><i class="fa fa-linkedin"></i></a></span>
+                <span className='icon mx-3'><a href='https://github.com/HylaDev' target='blank'><i class=" mx-3 fa fa-github"></i></a></span>
+            </div>
+            <p> Made with <span className='heart'>♡</span> by me</p>
+            
+        </div>
+    </section>
+    <!-- End Footer section-->
+    {% block scripts %}
+    <!--Bootstrap 5 script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!--Fontawesome -->
+    <script src="https://kit.fontawesome.com/c2cd48c276.js" crossorigin="anonymous"></script>
+    {% endblock %}
+</body>
+</html>

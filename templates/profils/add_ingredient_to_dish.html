@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Ajouter un ingrédient à un plat {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        
+        <div class="">
+            <h2>Ajouter un ingrédient à un plat</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% include 'messages.html' %} 
+                <form action="{% url 'ajout_ingredient_à_plat'%}" method="post">
+                    {% csrf_token %}
+                    <select name="dish" class="form-control my-3" id="">
+                        <option value="">Sélectionner le plat</option>
+                        {%for dish in dishs %}
+                            <option value="{{dish.id}}">{{dish.name}}</option>
+                        {%endfor %}
+                    </select>
+                    <select name="ingredient" class="form-control my-3" id="">
+                        <option value="">Sélectionner l'ingrédient</option>
+                        {%for ingredient in ingredients %}
+                            <option value="{{ingredient.id}}">{{ingredient.name}}</option>
+                        {%endfor %}
+                    </select>
+                    <input type="text" name="quantity" placeholder="Quantité ex: 100g" class="form-control">
+
+                    <button type="submit" class="btn btn-primary w-100 my-3">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

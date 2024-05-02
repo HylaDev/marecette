@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Plats {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        
+        <div class="my-4">
+            <h2>Plats</h2>
+        </div>
+        <div class="row">
+            {% for dish in dishs%}       
+            <div class="col-md-3 my-3">
+                <div class="card my-bg-primary text-white text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">{{dish.name}}</h5>
+                        <h6 class="card-text">{{dish.season.name}}</h6>
+                    </div>
+                </div>
+            </div>
+            {%endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Choix du plat {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        <div class="">
+            <h2>Choisissez un plat</h2>
+        </div>
+        <div class="row">
+            {% for dish in dishs %}
+           
+            <div class="col-md-3">
+                <a href="liste_de_course/{{dish.id}}">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">{{dish.name}}</h5>
+                        <p class="card-text">{{dish.description}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}

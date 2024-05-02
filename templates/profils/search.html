@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block title%} MaRecette | Résultats de recherches {% endblock%}
+
+{%block content %}
+<!-- contenu de la page -->
+<div class="content">
+    <div class="container mt-5">
+        <div class="row">
+            {% if dishs.count == 0 %}
+            <div class="container mt-1" id="bg1">
+                <p>Aucun plat ne correspond à '{{request.GET.query}}' </p>
+            </div>
+            {% endif %}
+            <div class="container mt-1" id="bg1">
+                <p>Résultat des plats liés à : '{{request.GET.query}}' </p>
+            </div>
+            {% for dish in dishs %}
+            
+            <div class="col-md-3">
+                <a href="{% url 'plats' %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{dish.name}}</h5>
+                            {% if dish.user.username == request.user.username %}
+                            <p class="card-text"><i>Créé par vous</i></p>
+                            {% else %}
+                            <p class="card-text"><i>Créé par {{dish.user}}</i></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            {% if ingredients.count == 0 %}
+            <div class="container mt-2 mb-3">
+                <p>Aucun ingrédient n'est lié à votre recherche: '{{request.GET.query}}' </p>
+            </div>
+            {% endif %}
+            <div class="container mt-2 mb-3">
+                <p>Résultat des ingrédients contenant : '{{request.GET.query}}' </p>
+            </div>
+            {% for ingredient in ingredients %}
+            
+            <div class="col-md-3">
+                <a href="">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ingredient.name}}</h5>
+                            {% if ingredient.user.username == request.user.username %}
+                            <p class="card-text"><i>Créé par vous</i></p>
+                            {% else %}
+                            <p class="card-text"><i>Créé par {{ingredient.user}}</i></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'dashboard' %}" class="mt-4" title="dashboard"> <span> Retour au dashboard</span></a>
+    </div>
+</div>
+{%endblock%}
