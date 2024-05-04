@@ -1,15 +1,16 @@
 """Importation des modules nécessaires
 """
 from django.urls import path
-from dishApp.views import dashboard, sign_up, sign_in, add_dish
-from dishApp.views import add_ingredient, add_ingredient_to_dish
-from dishApp.views import select_saison, recommend_dish_by_season, select_dish
-from dishApp.views import generate_shopping_list, search, dish_list
+from .views import dashboard, sign_up, sign_in, add_dish
+from .views import add_ingredient, add_ingredient_to_dish
+from .views import select_saison, recommend_dish_by_season, select_dish
+from .views import generate_shopping_list, search, dish_list, user_logout
 
 urlpatterns = [
      path('', dashboard, name='dashboard'),
      path('inscription', sign_up, name='inscription'),
      path('connexion', sign_in, name='connexion'),
+     path('deconnexion', user_logout, name='deconnexion'),
      path('ajout_plat', add_dish, name='ajout_plat'),
      path('ajout_ingredient', add_ingredient, name='ajout_ingredient'),
      path('ajout_ingredient_à_plat', add_ingredient_to_dish,

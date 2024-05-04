@@ -12,7 +12,7 @@ Forms: SignUpForm, AddDishForm, AddIngredientForm,
 Models: Season, Dish, Ingredient
 """
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -224,7 +224,7 @@ def select_saison(request):
 
 
 @login_required(login_url='connexion')
-def recommend_dish_by_season(request, id):
+def recommend_dish_by_season(request, id):  # pylint: disable=redefined-builtin
     """Recommander un plat par saison
 
     Params:
@@ -234,7 +234,8 @@ def recommend_dish_by_season(request, id):
         saison (int): id de la saison associée au plat
         dishs (list): Liste des plats liés à la saison sélectionné
     """
-    dishs = Dish.objects.filter(season=id)  # pylint: disable=maybe-no-member
+    dishs = Dish.objects.filter(    # pylint: disable=maybe-no-member
+        season=id, user=request.user)
     for dish in dishs:
         season = dish.season
     context = {
@@ -265,7 +266,7 @@ def select_dish(request):
 
 
 @login_required(login_url='connexion')
-def generate_shopping_list(request, id):
+def generate_shopping_list(request, id):    # pylint: disable=redefined-builtin
     """
     Générer une liste de course en fonction d'un plat
 
@@ -276,7 +277,8 @@ def generate_shopping_list(request, id):
         dish (int): id du plat lié à cet ingrédient
         ingredient_list (list): Liste des ingrédients contenu dans un plat
     """
-    ingredient_list = IngredientList.objects.filter(dish=id)
+    ingredient_list = IngredientList.objects.filter(  # pylint: disable=no-member
+        dish=id)
 
     context = {
         'ingredient_list': ingredient_list,
@@ -295,14 +297,14 @@ def search(request):
     Context:
         dishs (list): Liste des plats contenant la recherche
             de l'utilisateur
-        ingredients (list): Liste des plats contenant la recherche 
+        ingredients (list): Liste des plats contenant la recherche
             de l'utilisateur
 
     """
     query = request.GET.get('query')
-    dishs = Dish.objects.filter(
+    dishs = Dish.objects.filter(    # pylint: disable=no-member
         Q(name__icontains=query))
-    ingredients = Ingredient.objects.filter(
+    ingredients = Ingredient.objects.filter(    # pylint: disable=no-member
         Q(name__icontains=query) | Q(name__contains=query))
 
     context = {
@@ -310,3 +312,14 @@ def search(request):
         'ingredients': ingredients,
     }
     return render(request, 'profils/search.html', context)
+
+
+@login_required(login_url='connexion')
+def user_logout(request):
+    """Déconnexion
+
+    Params:
+        request: Requête entrante
+    """
+    logout(request)
+    return redirect('connexion')

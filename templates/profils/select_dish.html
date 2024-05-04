@@ -11,8 +11,8 @@
         </div>
         <div class="row">
             {% for dish in dishs %}
-           
-            <div class="col-md-3">
+            {% if dish.user == request.user %}
+            <div class="col-md-3 my-3">
                 <a href="liste_de_course/{{dish.id}}">
                     <div class="card">
                         <div class="card-body">
@@ -22,6 +22,7 @@
                     </div>
                 </a>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>

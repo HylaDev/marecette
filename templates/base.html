@@ -24,7 +24,7 @@
         <a href="{% url 'choix_saison' %}" title=""><i class="fa fa-pizza-slice"></i> <span>Recommander un plat</span></a>
         <a href="{% url 'choix_plat' %}" title=""><i class="fa fa-cutlery"></i> <span>Liste de courses</span></a>
         {% if user.is_authenticated %}
-        <a href="" title="Déconnexion"><i class="fa fa-user"></i> <span>{{user.username}}</span></a>
+        <a href="{% url 'deconnexion' %}" title="Déconnexion"><i class="fa fa-user"></i> <span>{{user.username}}</span></a>
         {% endif %}
     </div>
     {%block content%}
