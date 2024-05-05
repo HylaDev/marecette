@@ -1,24 +1,20 @@
-"""
-Module: TestCase
-
-Model: Ingredient
-"""
+"""Importation des modules nécessaires"""
 from django.test import TestCase
 from django.contrib.auth.models import User
 from dishApp.models import Ingredient, Dish, Season
 
 
 class IngredientTestCase(TestCase):
-    """
-    Test d'ajout d'un ingrédient dans la base de données
+    """Test d'ajout d'un ingrédient dans la base de données
 
     Method:
         test_creation_instance
     """
 
     def test_creation_instance(self):
+        """Création et ajout d'une instance pour le test"""
         # Créez un utilisateur
-        self.user = User.objects.create_user(username='testuser',
+        self.user = User.objects.create_user(username='testuser',  # pylint: disable:attribute-defined-outside-init
                                              email='test@gmail.com',
                                              password='testpassword')
 
@@ -41,7 +37,7 @@ class DishTestCase(TestCase):
     """
 
     def test_creation_instance(self):
-        """Création d'une instance pour le test"""
+        """Création et ajout d'une instance pour le test"""
         # Créez un utilisateur
         self.user = User.objects.create_user(username='testuser',
                                              email='test@gmail.com',

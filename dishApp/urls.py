@@ -1,5 +1,4 @@
-"""Importation des modules nécessaires
-"""
+"""Importation des modules nécessaires"""
 from django.urls import path
 from .views import dashboard, sign_up, sign_in, add_dish
 from .views import add_ingredient, add_ingredient_to_dish

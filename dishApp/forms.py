@@ -1,5 +1,4 @@
-"""Importation des modules nécessaires
-"""
+"""Importation des modules nécessaires"""
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
@@ -7,8 +6,7 @@ from .models import Dish, Ingredient, IngredientList
 
 
 class SignUpForm(UserCreationForm):  # pylint: disable=too-many-ancestors
-    """Formulaire d'inscription
-    """
+    """Formulaire d'inscription"""
     class Meta:  # pylint: disable=too-few-public-methods
         """Metadata de la table 'User'
 
@@ -21,8 +19,7 @@ class SignUpForm(UserCreationForm):  # pylint: disable=too-many-ancestors
 
 
 class AddDishForm(forms.ModelForm):
-    """Formulaire d'ajout de plat
-    """
+    """Formulaire d'ajout de plat"""
     class Meta:  # pylint: disable=too-few-public-methods
         """Metadata de la table 'Dish'
 
@@ -35,8 +32,7 @@ class AddDishForm(forms.ModelForm):
 
 
 class AddIngredientForm(forms.ModelForm):
-    """Formulaire d'ajout d'ingrédient
-    """
+    """Formulaire d'ajout d'ingrédient"""
     class Meta:  # pylint: disable=too-few-public-methods
         """Metadata de la table 'Ingredient'
 
@@ -49,8 +45,7 @@ class AddIngredientForm(forms.ModelForm):
 
 
 class AddIngredientToDishForm(forms.ModelForm):
-    """Formulaire d'ajout d'un ingrédient à un plat
-    """
+    """Formulaire d'ajout d'un ingrédient à un plat"""
     class Meta:  # pylint: disable=too-few-public-methods
         """Metadata de la table 'IngredientList'
 

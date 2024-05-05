@@ -1,5 +1,4 @@
-"""Importation des modules nécessaires
-"""
+"""Importation des modules nécessaires"""
 from django.db import models
 from django.contrib.auth.models import User
 

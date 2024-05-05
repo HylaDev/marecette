@@ -1,16 +1,4 @@
-"""Importation des modules nécessaires
-
-Modules: render to render the html page,
-    redirect to redirect user after submit forms,
-    authenticate to authencate user,
-    login to login user, messages to send confirmation message to user,
-    login_required, Q to search query
-
-Forms: SignUpForm, AddDishForm, AddIngredientForm,
-    AddIngredientToDishForm
-
-Models: Season, Dish, Ingredient
-"""
+"""Importation des modules nécessaires"""
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -28,7 +16,7 @@ def dashboard(request):
     Affiche la page "dashboard" qui présente le nombre de plats et d'ingrédient
     ajoutés par l'utilisateur connecté
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -50,7 +38,7 @@ def dashboard(request):
 def dish_list(request):
     """Affiche la liste des plats
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -66,10 +54,9 @@ def dish_list(request):
 
 
 def sign_up(request):
-    """
-    Création de compte utilisateur
+    """Création de compte utilisateur
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -94,13 +81,12 @@ def sign_up(request):
 
 
 def sign_in(request):
-    """
-    Connexion d'un utilisateur
+    """Connexion d'un utilisateur
 
     Pour la connexion, l'utilisateur doit renseigné son username et son
     password
 
-    Params:
+    Args:
         request: Requête entrante
     """
     if request.POST:
@@ -118,10 +104,9 @@ def sign_in(request):
 
 @login_required(login_url='connexion')
 def add_dish(request):
-    """
-    Ajout d'un plat
+    """Ajout d'un plat
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -148,7 +133,7 @@ def add_dish(request):
 def add_ingredient(request):
     """Ajout d'un ingrédient
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -172,7 +157,7 @@ def add_ingredient(request):
 def add_ingredient_to_dish(request):
     """Ajouter un ingrédient à un plat
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -209,7 +194,7 @@ def add_ingredient_to_dish(request):
 def select_saison(request):
     """Choix de saison
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -227,7 +212,7 @@ def select_saison(request):
 def recommend_dish_by_season(request, id):  # pylint: disable=redefined-builtin
     """Recommander un plat par saison
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -247,10 +232,9 @@ def recommend_dish_by_season(request, id):  # pylint: disable=redefined-builtin
 
 @login_required(login_url='connexion')
 def select_dish(request):
-    """
-    Choix du plat
+    """Choix du plat
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -267,10 +251,9 @@ def select_dish(request):
 
 @login_required(login_url='connexion')
 def generate_shopping_list(request, id):    # pylint: disable=redefined-builtin
-    """
-    Générer une liste de course en fonction d'un plat
+    """Générer une liste de course en fonction d'un plat
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -288,10 +271,9 @@ def generate_shopping_list(request, id):    # pylint: disable=redefined-builtin
 
 @login_required(login_url='inscription')
 def search(request):
-    """
-    Recherche d'un plat ou ingrédient
+    """Recherche d'un plat ou ingrédient
 
-    Params:
+    Args:
         request: Requête entrante
 
     Context:
@@ -318,7 +300,7 @@ def search(request):
 def user_logout(request):
     """Déconnexion
 
-    Params:
+    Args:
         request: Requête entrante
     """
     logout(request)
